@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateEventocomentarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateEventocomentarioLabel_codEventoComentario}" for="codEventoComentario" />
+                    <h:inputText id="codEventoComentario" value="#{eventocomentarioController.selected.codEventoComentario}" title="#{bundle.CreateEventocomentarioTitle_codEventoComentario}" required="true" requiredMessage="#{bundle.CreateEventocomentarioRequiredMessage_codEventoComentario}"/>
+                    <h:outputLabel value="#{bundle.CreateEventocomentarioLabel_comentario}" for="comentario" />
+                    <h:inputText id="comentario" value="#{eventocomentarioController.selected.comentario}" title="#{bundle.CreateEventocomentarioTitle_comentario}" required="true" requiredMessage="#{bundle.CreateEventocomentarioRequiredMessage_comentario}"/>
+                    <h:outputLabel value="#{bundle.CreateEventocomentarioLabel_codUsuario}" for="codUsuario" />
+                    <h:inputText id="codUsuario" value="#{eventocomentarioController.selected.codUsuario}" title="#{bundle.CreateEventocomentarioTitle_codUsuario}" required="true" requiredMessage="#{bundle.CreateEventocomentarioRequiredMessage_codUsuario}"/>
+                    <h:outputLabel value="#{bundle.CreateEventocomentarioLabel_eventoCodEvento}" for="eventoCodEvento" />
+                    <h:selectOneMenu id="eventoCodEvento" value="#{eventocomentarioController.selected.eventoCodEvento}" title="#{bundle.CreateEventocomentarioTitle_eventoCodEvento}" required="true" requiredMessage="#{bundle.CreateEventocomentarioRequiredMessage_eventoCodEvento}">
+                        <f:selectItems value="#{eventoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{eventocomentarioController.create}" value="#{bundle.CreateEventocomentarioSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{eventocomentarioController.prepareList}" value="#{bundle.CreateEventocomentarioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateEventocomentarioIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateRotascomentarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateRotascomentarioLabel_codRotasComentario}" for="codRotasComentario" />
+                    <h:inputText id="codRotasComentario" value="#{rotascomentarioController.selected.codRotasComentario}" title="#{bundle.CreateRotascomentarioTitle_codRotasComentario}" required="true" requiredMessage="#{bundle.CreateRotascomentarioRequiredMessage_codRotasComentario}"/>
+                    <h:outputLabel value="#{bundle.CreateRotascomentarioLabel_comentario}" for="comentario" />
+                    <h:inputText id="comentario" value="#{rotascomentarioController.selected.comentario}" title="#{bundle.CreateRotascomentarioTitle_comentario}" required="true" requiredMessage="#{bundle.CreateRotascomentarioRequiredMessage_comentario}"/>
+                    <h:outputLabel value="#{bundle.CreateRotascomentarioLabel_codUsuario}" for="codUsuario" />
+                    <h:inputText id="codUsuario" value="#{rotascomentarioController.selected.codUsuario}" title="#{bundle.CreateRotascomentarioTitle_codUsuario}" required="true" requiredMessage="#{bundle.CreateRotascomentarioRequiredMessage_codUsuario}"/>
+                    <h:outputLabel value="#{bundle.CreateRotascomentarioLabel_codRotas}" for="codRotas" />
+                    <h:inputText id="codRotas" value="#{rotascomentarioController.selected.codRotas}" title="#{bundle.CreateRotascomentarioTitle_codRotas}" required="true" requiredMessage="#{bundle.CreateRotascomentarioRequiredMessage_codRotas}"/>
+                    <h:outputLabel value="#{bundle.CreateRotascomentarioLabel_rotasCodRotas}" for="rotasCodRotas" />
+                    <h:selectOneMenu id="rotasCodRotas" value="#{rotascomentarioController.selected.rotasCodRotas}" title="#{bundle.CreateRotascomentarioTitle_rotasCodRotas}" required="true" requiredMessage="#{bundle.CreateRotascomentarioRequiredMessage_rotasCodRotas}">
+                        <f:selectItems value="#{rotasController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{rotascomentarioController.create}" value="#{bundle.CreateRotascomentarioSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{rotascomentarioController.prepareList}" value="#{bundle.CreateRotascomentarioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateRotascomentarioIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

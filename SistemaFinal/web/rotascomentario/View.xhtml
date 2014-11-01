@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRotascomentarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewRotascomentarioLabel_codRotasComentario}"/>
+                    <h:outputText value="#{rotascomentarioController.selected.codRotasComentario}" title="#{bundle.ViewRotascomentarioTitle_codRotasComentario}"/>
+                    <h:outputText value="#{bundle.ViewRotascomentarioLabel_comentario}"/>
+                    <h:outputText value="#{rotascomentarioController.selected.comentario}" title="#{bundle.ViewRotascomentarioTitle_comentario}"/>
+                    <h:outputText value="#{bundle.ViewRotascomentarioLabel_codUsuario}"/>
+                    <h:outputText value="#{rotascomentarioController.selected.codUsuario}" title="#{bundle.ViewRotascomentarioTitle_codUsuario}"/>
+                    <h:outputText value="#{bundle.ViewRotascomentarioLabel_codRotas}"/>
+                    <h:outputText value="#{rotascomentarioController.selected.codRotas}" title="#{bundle.ViewRotascomentarioTitle_codRotas}"/>
+                    <h:outputText value="#{bundle.ViewRotascomentarioLabel_rotasCodRotas}"/>
+                    <h:outputText value="#{rotascomentarioController.selected.rotasCodRotas}" title="#{bundle.ViewRotascomentarioTitle_rotasCodRotas}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{rotascomentarioController.destroyAndView}" value="#{bundle.ViewRotascomentarioDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewRotascomentarioEditLink}"/>
+                <br />
+                <h:commandLink action="#{rotascomentarioController.prepareCreate}" value="#{bundle.ViewRotascomentarioCreateLink}" />
+                <br />
+                <h:commandLink action="#{rotascomentarioController.prepareList}" value="#{bundle.ViewRotascomentarioShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewRotascomentarioIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

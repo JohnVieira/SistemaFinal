@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePontoturisticocomentarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePontoturisticocomentarioLabel_codPontoTuristicoComentario}" for="codPontoTuristicoComentario" />
+                    <h:inputText id="codPontoTuristicoComentario" value="#{pontoturisticocomentarioController.selected.codPontoTuristicoComentario}" title="#{bundle.CreatePontoturisticocomentarioTitle_codPontoTuristicoComentario}" required="true" requiredMessage="#{bundle.CreatePontoturisticocomentarioRequiredMessage_codPontoTuristicoComentario}"/>
+                    <h:outputLabel value="#{bundle.CreatePontoturisticocomentarioLabel_comentario}" for="comentario" />
+                    <h:inputText id="comentario" value="#{pontoturisticocomentarioController.selected.comentario}" title="#{bundle.CreatePontoturisticocomentarioTitle_comentario}" required="true" requiredMessage="#{bundle.CreatePontoturisticocomentarioRequiredMessage_comentario}"/>
+                    <h:outputLabel value="#{bundle.CreatePontoturisticocomentarioLabel_codPonrtoTuristico}" for="codPonrtoTuristico" />
+                    <h:inputText id="codPonrtoTuristico" value="#{pontoturisticocomentarioController.selected.codPonrtoTuristico}" title="#{bundle.CreatePontoturisticocomentarioTitle_codPonrtoTuristico}" required="true" requiredMessage="#{bundle.CreatePontoturisticocomentarioRequiredMessage_codPonrtoTuristico}"/>
+                    <h:outputLabel value="#{bundle.CreatePontoturisticocomentarioLabel_codUsuario}" for="codUsuario" />
+                    <h:inputText id="codUsuario" value="#{pontoturisticocomentarioController.selected.codUsuario}" title="#{bundle.CreatePontoturisticocomentarioTitle_codUsuario}" required="true" requiredMessage="#{bundle.CreatePontoturisticocomentarioRequiredMessage_codUsuario}"/>
+                    <h:outputLabel value="#{bundle.CreatePontoturisticocomentarioLabel_pontoTuristicoCodPontoTuristico}" for="pontoTuristicoCodPontoTuristico" />
+                    <h:selectOneMenu id="pontoTuristicoCodPontoTuristico" value="#{pontoturisticocomentarioController.selected.pontoTuristicoCodPontoTuristico}" title="#{bundle.CreatePontoturisticocomentarioTitle_pontoTuristicoCodPontoTuristico}" required="true" requiredMessage="#{bundle.CreatePontoturisticocomentarioRequiredMessage_pontoTuristicoCodPontoTuristico}">
+                        <f:selectItems value="#{pontoturisticoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pontoturisticocomentarioController.create}" value="#{bundle.CreatePontoturisticocomentarioSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{pontoturisticocomentarioController.prepareList}" value="#{bundle.CreatePontoturisticocomentarioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePontoturisticocomentarioIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

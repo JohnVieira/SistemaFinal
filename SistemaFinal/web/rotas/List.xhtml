@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListRotasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListRotasEmpty}" rendered="#{rotasController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{rotasController.items.rowCount > 0}">
+                    <h:outputText value="#{rotasController.pagination.pageFirstItem + 1}..#{rotasController.pagination.pageLastItem + 1}/#{rotasController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{rotasController.previous}" value="#{bundle.Previous} #{rotasController.pagination.pageSize}" rendered="#{rotasController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{rotasController.next}" value="#{bundle.Next} #{rotasController.pagination.pageSize}" rendered="#{rotasController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{rotasController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRotasTitle_codRotas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codRotas}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRotasTitle_rota}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rota}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRotasTitle_descricao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descricao}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRotasTitle_codPontoTuristico}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codPontoTuristico}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRotasTitle_pontoTuristicoCodPontoTuristico}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pontoTuristicoCodPontoTuristico}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{rotasController.prepareView}" value="#{bundle.ListRotasViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{rotasController.prepareEdit}" value="#{bundle.ListRotasEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{rotasController.destroy}" value="#{bundle.ListRotasDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{rotasController.prepareCreate}" value="#{bundle.ListRotasCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListRotasIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

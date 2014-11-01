@@ -1,39 +1,23 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Facelet Title</title>
-        <h:outputStylesheet name="css/jsfcrud.css"/>
-    </h:head>
-    <h:body>
-        Hello from Facelets
-        <br />
-        <h:link outcome="welcomePrimefaces" value="Página de boas-vindas do Primefaces" />
-        <br />
-        <h:link outcome="/evento/List" value="Show All Evento Items"/>
-        <br />
-        <h:link outcome="/eventoHasUsuario/List" value="Show All EventoHasUsuario Items"/>
-        <br />
-        <h:link outcome="/eventocomentario/List" value="Show All Eventocomentario Items"/>
-        <br />
-        <h:link outcome="/pontoturistico/List" value="Show All Pontoturistico Items"/>
-        <br />
-        <h:link outcome="/pontoturisticocomentario/List" value="Show All Pontoturisticocomentario Items"/>
-        <br />
-        <h:link outcome="/rotas/List" value="Show All Rotas Items"/>
-        <br />
-        <h:link outcome="/rotascomentario/List" value="Show All Rotascomentario Items"/>
-        <br />
-        <h:link outcome="/usuario/List" value="Show All Usuario Items"/>
-    </h:body>
-
-
-
-
-
-
-
-
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:decorate template="./template.xhtml">
+        <ui:define name="centro">
+           <h:graphicImage  url="Imagens/itatiaia.jpg"/>
+           Este é o Index
+           
+                    
+        </ui:define>>
+    </ui:decorate>
 </html>
+
+
+
+
+
+
 

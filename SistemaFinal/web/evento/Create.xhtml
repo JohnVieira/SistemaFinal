@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateEventoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateEventoLabel_codEvento}" for="codEvento" />
+                    <h:inputText id="codEvento" value="#{eventoController.selected.codEvento}" title="#{bundle.CreateEventoTitle_codEvento}" required="true" requiredMessage="#{bundle.CreateEventoRequiredMessage_codEvento}"/>
+                    <h:outputLabel value="#{bundle.CreateEventoLabel_nome}" for="nome" />
+                    <h:inputText id="nome" value="#{eventoController.selected.nome}" title="#{bundle.CreateEventoTitle_nome}" required="true" requiredMessage="#{bundle.CreateEventoRequiredMessage_nome}"/>
+                    <h:outputLabel value="#{bundle.CreateEventoLabel_descricao}" for="descricao" />
+                    <h:inputText id="descricao" value="#{eventoController.selected.descricao}" title="#{bundle.CreateEventoTitle_descricao}" required="true" requiredMessage="#{bundle.CreateEventoRequiredMessage_descricao}"/>
+                    <h:outputLabel value="#{bundle.CreateEventoLabel_data}" for="data" />
+                    <h:inputText id="data" value="#{eventoController.selected.data}" title="#{bundle.CreateEventoTitle_data}" required="true" requiredMessage="#{bundle.CreateEventoRequiredMessage_data}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateEventoLabel_horarioSaida}" for="horarioSaida" />
+                    <h:inputText id="horarioSaida" value="#{eventoController.selected.horarioSaida}" title="#{bundle.CreateEventoTitle_horarioSaida}" required="true" requiredMessage="#{bundle.CreateEventoRequiredMessage_horarioSaida}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateEventoLabel_codPontoTuristico}" for="codPontoTuristico" />
+                    <h:inputText id="codPontoTuristico" value="#{eventoController.selected.codPontoTuristico}" title="#{bundle.CreateEventoTitle_codPontoTuristico}" required="true" requiredMessage="#{bundle.CreateEventoRequiredMessage_codPontoTuristico}"/>
+                    <h:outputLabel value="#{bundle.CreateEventoLabel_pontoTuristicoCodPontoTuristico}" for="pontoTuristicoCodPontoTuristico" />
+                    <h:selectOneMenu id="pontoTuristicoCodPontoTuristico" value="#{eventoController.selected.pontoTuristicoCodPontoTuristico}" title="#{bundle.CreateEventoTitle_pontoTuristicoCodPontoTuristico}" required="true" requiredMessage="#{bundle.CreateEventoRequiredMessage_pontoTuristicoCodPontoTuristico}">
+                        <f:selectItems value="#{pontoturisticoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{eventoController.create}" value="#{bundle.CreateEventoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{eventoController.prepareList}" value="#{bundle.CreateEventoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateEventoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

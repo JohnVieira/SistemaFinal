@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateEventoHasUsuarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateEventoHasUsuarioLabel_desistencia}" for="desistencia" />
+                    <h:inputText id="desistencia" value="#{eventoHasUsuarioController.selected.desistencia}" title="#{bundle.CreateEventoHasUsuarioTitle_desistencia}" />
+                    <h:outputLabel value="#{bundle.CreateEventoHasUsuarioLabel_motivo}" for="motivo" />
+                    <h:inputText id="motivo" value="#{eventoHasUsuarioController.selected.motivo}" title="#{bundle.CreateEventoHasUsuarioTitle_motivo}" />
+                    <h:outputLabel value="#{bundle.CreateEventoHasUsuarioLabel_usuario}" for="usuario" />
+                    <h:selectOneMenu id="usuario" value="#{eventoHasUsuarioController.selected.usuario}" title="#{bundle.CreateEventoHasUsuarioTitle_usuario}" required="true" requiredMessage="#{bundle.CreateEventoHasUsuarioRequiredMessage_usuario}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateEventoHasUsuarioLabel_evento}" for="evento" />
+                    <h:selectOneMenu id="evento" value="#{eventoHasUsuarioController.selected.evento}" title="#{bundle.CreateEventoHasUsuarioTitle_evento}" required="true" requiredMessage="#{bundle.CreateEventoHasUsuarioRequiredMessage_evento}">
+                        <f:selectItems value="#{eventoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{eventoHasUsuarioController.create}" value="#{bundle.CreateEventoHasUsuarioSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{eventoHasUsuarioController.prepareList}" value="#{bundle.CreateEventoHasUsuarioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateEventoHasUsuarioIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

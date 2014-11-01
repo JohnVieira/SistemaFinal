@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEventocomentarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEventocomentarioLabel_codEventoComentario}"/>
+                    <h:outputText value="#{eventocomentarioController.selected.codEventoComentario}" title="#{bundle.ViewEventocomentarioTitle_codEventoComentario}"/>
+                    <h:outputText value="#{bundle.ViewEventocomentarioLabel_comentario}"/>
+                    <h:outputText value="#{eventocomentarioController.selected.comentario}" title="#{bundle.ViewEventocomentarioTitle_comentario}"/>
+                    <h:outputText value="#{bundle.ViewEventocomentarioLabel_codUsuario}"/>
+                    <h:outputText value="#{eventocomentarioController.selected.codUsuario}" title="#{bundle.ViewEventocomentarioTitle_codUsuario}"/>
+                    <h:outputText value="#{bundle.ViewEventocomentarioLabel_eventoCodEvento}"/>
+                    <h:outputText value="#{eventocomentarioController.selected.eventoCodEvento}" title="#{bundle.ViewEventocomentarioTitle_eventoCodEvento}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{eventocomentarioController.destroyAndView}" value="#{bundle.ViewEventocomentarioDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewEventocomentarioEditLink}"/>
+                <br />
+                <h:commandLink action="#{eventocomentarioController.prepareCreate}" value="#{bundle.ViewEventocomentarioCreateLink}" />
+                <br />
+                <h:commandLink action="#{eventocomentarioController.prepareList}" value="#{bundle.ViewEventocomentarioShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewEventocomentarioIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

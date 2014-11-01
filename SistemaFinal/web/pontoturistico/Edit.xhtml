@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPontoturisticoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditPontoturisticoLabel_codPontoTuristico}" for="codPontoTuristico" />
+                    <h:inputText id="codPontoTuristico" value="#{pontoturisticoController.selected.codPontoTuristico}" title="#{bundle.EditPontoturisticoTitle_codPontoTuristico}" required="true" requiredMessage="#{bundle.EditPontoturisticoRequiredMessage_codPontoTuristico}"/>
+                    <h:outputLabel value="#{bundle.EditPontoturisticoLabel_nome}" for="nome" />
+                    <h:inputText id="nome" value="#{pontoturisticoController.selected.nome}" title="#{bundle.EditPontoturisticoTitle_nome}" required="true" requiredMessage="#{bundle.EditPontoturisticoRequiredMessage_nome}"/>
+                    <h:outputLabel value="#{bundle.EditPontoturisticoLabel_descricao}" for="descricao" />
+                    <h:inputText id="descricao" value="#{pontoturisticoController.selected.descricao}" title="#{bundle.EditPontoturisticoTitle_descricao}" required="true" requiredMessage="#{bundle.EditPontoturisticoRequiredMessage_descricao}"/>
+                    <h:outputLabel value="#{bundle.EditPontoturisticoLabel_dicas}" for="dicas" />
+                    <h:inputText id="dicas" value="#{pontoturisticoController.selected.dicas}" title="#{bundle.EditPontoturisticoTitle_dicas}" required="true" requiredMessage="#{bundle.EditPontoturisticoRequiredMessage_dicas}"/>
+                    <h:outputLabel value="#{bundle.EditPontoturisticoLabel_imagem}" for="imagem" />
+                    <h:inputText id="imagem" value="#{pontoturisticoController.selected.imagem}" title="#{bundle.EditPontoturisticoTitle_imagem}" />
+                </h:panelGrid>
+                <h:commandLink action="#{pontoturisticoController.update}" value="#{bundle.EditPontoturisticoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditPontoturisticoViewLink}"/>
+                <br />
+                <h:commandLink action="#{pontoturisticoController.prepareList}" value="#{bundle.EditPontoturisticoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditPontoturisticoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

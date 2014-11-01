@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPontoturisticoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPontoturisticoEmpty}" rendered="#{pontoturisticoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{pontoturisticoController.items.rowCount > 0}">
+                    <h:outputText value="#{pontoturisticoController.pagination.pageFirstItem + 1}..#{pontoturisticoController.pagination.pageLastItem + 1}/#{pontoturisticoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{pontoturisticoController.previous}" value="#{bundle.Previous} #{pontoturisticoController.pagination.pageSize}" rendered="#{pontoturisticoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{pontoturisticoController.next}" value="#{bundle.Next} #{pontoturisticoController.pagination.pageSize}" rendered="#{pontoturisticoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{pontoturisticoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPontoturisticoTitle_codPontoTuristico}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codPontoTuristico}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPontoturisticoTitle_nome}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nome}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPontoturisticoTitle_descricao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descricao}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPontoturisticoTitle_dicas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dicas}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPontoturisticoTitle_imagem}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.imagem}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{pontoturisticoController.prepareView}" value="#{bundle.ListPontoturisticoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{pontoturisticoController.prepareEdit}" value="#{bundle.ListPontoturisticoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{pontoturisticoController.destroy}" value="#{bundle.ListPontoturisticoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{pontoturisticoController.prepareCreate}" value="#{bundle.ListPontoturisticoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPontoturisticoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

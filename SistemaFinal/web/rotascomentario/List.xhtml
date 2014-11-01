@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListRotascomentarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListRotascomentarioEmpty}" rendered="#{rotascomentarioController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{rotascomentarioController.items.rowCount > 0}">
+                    <h:outputText value="#{rotascomentarioController.pagination.pageFirstItem + 1}..#{rotascomentarioController.pagination.pageLastItem + 1}/#{rotascomentarioController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{rotascomentarioController.previous}" value="#{bundle.Previous} #{rotascomentarioController.pagination.pageSize}" rendered="#{rotascomentarioController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{rotascomentarioController.next}" value="#{bundle.Next} #{rotascomentarioController.pagination.pageSize}" rendered="#{rotascomentarioController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{rotascomentarioController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRotascomentarioTitle_codRotasComentario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codRotasComentario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRotascomentarioTitle_comentario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.comentario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRotascomentarioTitle_codUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codUsuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRotascomentarioTitle_codRotas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codRotas}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRotascomentarioTitle_rotasCodRotas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rotasCodRotas}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{rotascomentarioController.prepareView}" value="#{bundle.ListRotascomentarioViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{rotascomentarioController.prepareEdit}" value="#{bundle.ListRotascomentarioEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{rotascomentarioController.destroy}" value="#{bundle.ListRotascomentarioDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{rotascomentarioController.prepareCreate}" value="#{bundle.ListRotascomentarioCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListRotascomentarioIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
