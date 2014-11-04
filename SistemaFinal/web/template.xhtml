@@ -21,20 +21,19 @@
                 <p:layout style="min-width:1020px;max-width:1020px;min-height:600px">  
                 
                 <p:layoutUnit position="north" size="130">  
-                    
-                    <h:graphicImage  url="Imagens/iguazu.jpg" style="content: " />
-                    
+                    <h:graphicImage  url="Imagens/iguazu.jpg" style="width:auto " />
                 </p:layoutUnit>  
                 
                 <p:layoutUnit position="west" size="220" resizable="true"  minSize="40" maxSize="200">  
                     <ui:insert name="menu">
-                        <h:form id="Formulario">
+                        <h:form id="menuForm">
                             <p:menu style="width: 200px">
                                 <p:submenu label="Menu">
                                     <p:menuitem value="Login" icon="ui-icon-key" />
-                                    <p:menuitem value="Fazer meu cadastro" icon="ui-icon-contact" />         
+                                    <p:menuitem value="Fazer meu cadastro" icon="ui-icon-contact" outcome="/usuario/Create" />         
                                 </p:submenu>
                             </p:menu>
+                           
                         </h:form>
                     </ui:insert>
                 </p:layoutUnit>
